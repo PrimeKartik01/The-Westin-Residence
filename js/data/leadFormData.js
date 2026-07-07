@@ -1,20 +1,20 @@
 export const leadFormData = {
     requirements: [
         {
-            value: "buy",
-            label: "Buy Property"
+            value: "3 BHK Small",
+            label: "3 BHK Small"
         },
         {
-            value: "sell",
-            label: "Sell Property"
+            value: "3 BHK Large",
+            label: "3 BHK Large"
         },
         {
-            value: "rent",
-            label: "Rent Property"
+            value: "4 BHK Small",
+            label: "4 BHK Small"
         },
         {
-            value: "investment",
-            label: "Investment"
+            value: "4 BHK Large",
+            label: "4 BHK Large"
         }
     ]
 };

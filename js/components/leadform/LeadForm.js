@@ -13,12 +13,12 @@ export function LeadForm() {
     return `
         <div class="pointer-events-auto w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden mt-8">
 
-            <div class="bg-royal-navy px-8 py-6 ">
+            <div class="bg-royal-navy px-8 py-6">
                 <h2 class="text-3xl font-bold font-serif text-royal-gold">
                     Enquire Now
                 </h2>
 
-                <p class="text-slate-300 mt-2 font-sans font-light text-sm">
+                <p class="text-slate-300 mt-2 text-sm">
                     Fill the details and our residence expert will contact you shortly.
                 </p>
             </div>
@@ -28,62 +28,52 @@ export function LeadForm() {
                 class="p-8 space-y-5 bg-white"
             >
 
-                <div>
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Full Name"
-                        class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-royal-gold/50 focus:border-royal-gold transition-colors font-sans"
-                        required
-                    >
-                </div>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name"
+                    class="w-full border rounded-lg px-4 py-3"
+                    required
+                >
 
-                <div>
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email Address"
-                        class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-royal-gold/50 focus:border-royal-gold transition-colors font-sans"
-                        required
-                    >
-                </div>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    class="w-full border rounded-lg px-4 py-3"
+                    required
+                >
 
-                <div>
-                    <input
-                        type="tel"
-                        name="mobile"
-                        placeholder="Mobile Number"
-                        class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-royal-gold/50 focus:border-royal-gold transition-colors font-sans"
-                        required
-                    >
-                </div>
+                <input
+                    type="tel"
+                    name="mobile"
+                    placeholder="Mobile Number"
+                    class="w-full border rounded-lg px-4 py-3"
+                    required
+                >
 
-                <div>
-                    <input
-                        type="text"
-                        name="city"
-                        placeholder="City"
-                        class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-royal-gold/50 focus:border-royal-gold transition-colors font-sans"
-                    >
-                </div>
+                <input
+                    type="text"
+                    name="city"
+                    placeholder="City"
+                    class="w-full border rounded-lg px-4 py-3"
+                >
 
-                <div>
-                    <select
-                        name="requirement"
-                        class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-royal-gold/50 focus:border-royal-gold transition-colors font-sans"
-                        required
-                    >
-                        <option value="">
-                            Select Requirement
-                        </option>
+                <select
+                    name="requirement"
+                    class="w-full border rounded-lg px-4 py-3"
+                    required
+                >
+                    <option value="">Select Requirement</option>
 
-                        ${requirementOptions}
-                    </select>
-                </div>
+                    ${requirementOptions}
+
+                </select>
 
                 <button
+                    id="lead-submit-btn"
                     type="submit"
-                    class="w-full bg-royal-gold hover:bg-royal-gold-dark transition-all duration-300 text-royal-navy font-serif font-bold tracking-widest uppercase py-3.5 rounded-lg shadow-md hover:shadow-royal-gold/20"
+                    class="w-full bg-royal-gold py-3 rounded-lg font-bold"
                 >
                     Submit Enquiry
                 </button>
@@ -92,5 +82,74 @@ export function LeadForm() {
 
         </div>
     `;
+}
+
+export function initLeadForm() {
+
+    const form = document.getElementById("lead-form");
+
+    if (!form) return;
+
+    form.addEventListener("submit", async (e) => {
+
+        e.preventDefault();
+
+        const button =
+            document.getElementById("lead-submit-btn");
+
+        button.disabled = true;
+        button.innerText = "Submitting...";
+
+        const data = {
+
+            name: form.name.value,
+
+            email: form.email.value,
+
+            mobile: form.mobile.value,
+
+            city: form.city.value,
+
+            requirement: form.requirement.value
+
+        };
+
+        try {
+
+            const response = await fetch("http://localhost:3000/api/lead", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(data)
+
+            });
+
+            const result =
+                await response.json();
+
+            alert(result.message);
+
+            if (result.success) {
+
+                form.reset();
+
+            }
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("Unable to submit enquiry.");
+
+        }
+
+        button.disabled = false;
+        button.innerText = "Submit Enquiry";
+
+    });
 
 }

@@ -1,4 +1,4 @@
-import { LeadForm } from "../leadform/LeadForm.js";
+import { LeadForm, initLeadForm } from "../leadform/LeadForm.js";
 
 export function initHeroSlider({
     containerId,
@@ -106,6 +106,7 @@ export function initHeroSlider({
         </div>
 
     `;
+    initLeadForm();
 
     const slideElements =
         container.querySelectorAll(".hero-slide");

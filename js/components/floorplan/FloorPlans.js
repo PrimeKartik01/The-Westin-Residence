@@ -10,6 +10,7 @@ export function FloorPlans({
     if (!container) return;
 
     let targetPlanToDownload = null;
+    let pendingBHK = null;
 
     function checkSubmitted() {
         return localStorage.getItem("leadSubmitted") === "true";
@@ -113,12 +114,42 @@ export function FloorPlans({
 
                                     </div>
 
+                                    <!-- Enquiry Now Button -->
+                                    <button
+                                        data-title="${plan.title}"
+                                        data-action="enquiry"
+                                        class="
+                                            floor-plan-enquiry-btn
+                                            mt-5
+                                            w-full
+                                            bg-royal-gold
+                                            hover:bg-royal-gold-dark
+                                            text-royal-navy
+                                            border
+                                            border-royal-gold
+                                            py-3
+                                            rounded-full
+                                            font-serif
+                                            uppercase
+                                            tracking-widest
+                                            text-[10px]
+                                            font-semibold
+                                            shadow-lg
+                                            shadow-royal-gold/10
+                                            transition-all
+                                            duration-300
+                                        "
+                                    >
+                                        Enquire Now
+                                    </button>
+
+                                    <!-- Download / Request Floor Plan Button -->
                                     <button
                                         data-title="${plan.title}"
                                         data-image="${plan.image}"
                                         class="
                                             floor-plan-btn
-                                            mt-6
+                                            mt-3
                                             w-full
                                             bg-royal-navy
                                             hover:bg-royal-gold
@@ -161,6 +192,17 @@ export function FloorPlans({
     }
 
     function setupListeners() {
+        // Enquiry Now buttons — open modal with BHK pre-selected
+        const enquiryBtns = container.querySelectorAll(".floor-plan-enquiry-btn");
+        enquiryBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const title = btn.getAttribute("data-title");
+                pendingBHK = title;
+                openModal(title);
+            });
+        });
+
+        // Download / Request Floor Plan buttons
         const buttons = container.querySelectorAll(".floor-plan-btn");
         buttons.forEach(btn => {
             btn.addEventListener("click", () => {
@@ -171,13 +213,14 @@ export function FloorPlans({
                     triggerDownload(image, `${title.replace(/\s+/g, "_")}_floor_plan.jpg`);
                 } else {
                     targetPlanToDownload = { title, image };
-                    openModal();
+                    pendingBHK = title;
+                    openModal(title);
                 }
             });
         });
     }
 
-    function openModal() {
+    function openModal(preSelectBHK = null) {
         let modal = document.getElementById("lead-modal-popup");
         if (!modal) {
             modal = document.createElement("div");
@@ -196,6 +239,14 @@ export function FloorPlans({
         `;
 
         initLeadForm("-modal");
+
+        // Pre-select BHK dropdown
+        if (preSelectBHK) {
+            const selectEl = modal.querySelector("select[name='requirement']");
+            if (selectEl) {
+                selectEl.value = preSelectBHK;
+            }
+        }
 
         requestAnimationFrame(() => {
             modal.classList.remove("opacity-0", "pointer-events-none");
@@ -226,6 +277,12 @@ export function FloorPlans({
         if (targetPlanToDownload) {
             triggerDownload(targetPlanToDownload.image, `${targetPlanToDownload.title.replace(/\s+/g, "_")}_floor_plan.jpg`);
             targetPlanToDownload = null;
+        }
+
+        // Unlock master plan section
+        const masterPlanSection = document.getElementById("master-plan");
+        if (masterPlanSection) {
+            masterPlanSection.dispatchEvent(new CustomEvent("unlock-master-plan"));
         }
     });
 

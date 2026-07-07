@@ -10,13 +10,15 @@ import { galleryData } from "../data/galleryData.js";
 import { FloorPlans } from "../components/floorplan/FloorPlans.js";
 import { floorPlanData } from "../data/floorPlanData.js";
 
+import { MasterPlan } from "../components/masterplan/MasterPlan.js";
+
 import { Amenities } from "../components/amenities/Amenities.js";
 import { amenities } from "../data/amenitiesData.js";
 
 import { Footer } from "../components/footer/Footer.js";
 
 import { Map } from "../components/map/Map.js";
-import { mapData } from "../data/mapData.js";
+import { locationData } from "../data/mapData.js";
 
 
 initHeroSlider({
@@ -42,6 +44,12 @@ FloorPlans({
     plans: floorPlanData
 });
 
+MasterPlan({
+    containerId: "master-plan",
+    masterPlanImage: "/img/img1.webp",
+    masterPlanTitle: "The Westin Residence Master Plan"
+});
+
 Amenities({
     containerId: "amenities",
     amenities
@@ -49,9 +57,9 @@ Amenities({
 
 Map({
     containerId: "map",
-    mapUrl: mapData.mapUrl
+    data: locationData
 });
 
 Footer({
     containerId: "footer"
-});
+});

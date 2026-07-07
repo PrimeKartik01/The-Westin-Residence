@@ -1,0 +1,151 @@
+.spotlight-card {
+
+    width: min(700px, 90vw);
+
+    will-change:
+        transform,
+        opacity;
+
+    transition:
+        transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 900ms ease;
+
+}
+
+.spotlight-image {
+
+    transition:
+        transform 6s ease;
+
+}
+
+/* Active */
+
+.spotlight-card.active {
+
+    opacity: 1;
+
+    z-index: 10;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+}
+
+.spotlight-card.active .spotlight-image {
+
+    transform:
+        scale(1.08);
+
+}
+
+/* Desktop */
+
+@media (min-width: 1024px) {
+
+    .spotlight-card.prev {
+
+        opacity: .45;
+
+        z-index: 5;
+
+        transform:
+            translate(-120%, -50%)
+            scale(.85);
+
+    }
+
+    .spotlight-card.next {
+
+        opacity: .45;
+
+        z-index: 5;
+
+        transform:
+            translate(20%, -50%)
+            scale(.85);
+
+    }
+
+}
+
+/* Tablet */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+    .spotlight-card.prev {
+
+        opacity: .3;
+
+        z-index: 5;
+
+        transform:
+            translate(-90%, -50%)
+            scale(.75);
+
+    }
+
+    .spotlight-card.next {
+
+        opacity: .3;
+
+        z-index: 5;
+
+        transform:
+            translate(-10%, -50%)
+            scale(.75);
+
+    }
+
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .spotlight-card {
+
+        width: 92vw;
+
+    }
+
+    .spotlight-card.prev,
+    .spotlight-card.next,
+    .spotlight-card.hidden {
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.9);
+
+    }
+
+    .spotlight-card.active {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+    }
+
+}
+
+/* Hidden */
+
+.spotlight-card.hidden {
+
+    opacity: 0;
+
+    z-index: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.7);
+
+}

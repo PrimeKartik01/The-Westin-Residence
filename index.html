@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- <link rel="stylesheet" href="./css/herostyle.css"> -->
+    <link rel="stylesheet" href="./css/heroslider2.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Tailwind Configuration -->
+    <style type="text/tailwindcss">
+        @theme {
+            --color-royal-navy: #0b1325;
+            --color-royal-navy-light: #16223f;
+            --color-royal-gold: #c5a880;
+            --color-royal-gold-dark: #a88a61;
+            --color-royal-cream: #faf8f5;
+            --color-royal-charcoal: #15181f;
+            
+            --font-serif: "Cormorant Garamond", serif;
+            --font-sans: "Outfit", sans-serif;
+        }
+    </style>
+
+    <title>The Westin Residence | Luxury Living</title>
+</head>
+
+<body>
+
+    <!-- Navbar Render Here -->
+    <header id="navbar"></header>
+
+    <!-- Slider 2 -->
+    <section id="hero-slider" class="relative lg:h-[50rem] overflow-hidden bg-black">
+    </section>
+
+    <div id="floor-plans"></div>
+
+    <section class="bg-royal-cream py-20 border-y border-royal-gold/10">
+        <div class="w-full mx-auto px-6 lg:px-8">
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+                <!-- Left Content -->
+                <div class="space-y-6">
+
+                    <span
+                        class="inline-block px-5 py-2 rounded-full bg-royal-gold/10 text-royal-gold font-serif tracking-widest uppercase text-xs border border-royal-gold/20 font-semibold">
+                        About Us
+                    </span>
+
+                    <h2 class="text-4xl lg:text-5xl font-bold font-serif text-royal-navy leading-tight">
+                        Your Trusted Partner in
+                        <span class="text-royal-gold block lg:inline">
+                            Real Estate Excellence
+                        </span>
+                    </h2>
+
+                    <p class="text-lg text-slate-600 leading-relaxed font-sans font-light">
+                        We specialize in delivering premium residential and commercial
+                        properties that combine exceptional locations, modern
+                        architecture, and long-term investment value. Our commitment is
+                        to help every client find a property that perfectly matches
+                        their lifestyle and financial goals.
+                    </p>
+
+                    <div class="pt-6 grid grid-cols-3 gap-8">
+
+                        <div class="border-l-2 border-royal-gold/30 pl-4">
+                            <h3 class="text-4xl font-bold font-serif text-royal-gold">
+                                500+
+                            </h3>
+                            <p class="mt-2 text-xs uppercase tracking-wider text-slate-400 font-sans">
+                                Properties
+                            </p>
+                        </div>
+
+                        <div class="border-l-2 border-royal-gold/30 pl-4">
+                            <h3 class="text-4xl font-bold font-serif text-royal-gold">
+                                1000+
+                            </h3>
+                            <p class="mt-2 text-xs uppercase tracking-wider text-slate-400 font-sans">
+                                Happy Clients
+                            </p>
+                        </div>
+
+                        <div class="border-l-2 border-royal-gold/30 pl-4">
+                            <h3 class="text-4xl font-bold font-serif text-royal-gold">
+                                10+
+                            </h3>
+                            <p class="mt-2 text-xs uppercase tracking-wider text-slate-400 font-sans">
+                                Years Experience
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Right Card -->
+                <div class="relative">
+                    <div class="absolute -top-10 -right-10 size-40 bg-royal-gold/5 rounded-full blur-3xl"></div>
+                    <div class="absolute -bottom-10 -left-10 size-40 bg-royal-navy/5 rounded-full blur-3xl"></div>
+
+                    <div
+                        class="relative bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-royal-gold/10 overflow-hidden">
+
+                        <h3 class="text-3xl font-bold font-serif text-royal-navy mb-8">
+                            Why Choose Us?
+                        </h3>
+
+                        <div class="space-y-8">
+
+                            <div class="flex gap-5">
+                                <div
+                                    class="size-8 shrink-0 rounded-full bg-royal-gold/10 flex items-center justify-center text-royal-gold font-bold border border-royal-gold/20">
+                                    ✓
+                                </div>
+
+                                <div>
+                                    <h4 class="font-semibold font-serif text-lg text-royal-navy">
+                                        Verified Properties
+                                    </h4>
+
+                                    <p class="text-slate-500 mt-1 text-sm font-light leading-relaxed">
+                                        Every listing is verified to ensure complete transparency and trust.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-5">
+                                <div
+                                    class="size-8 shrink-0 rounded-full bg-royal-gold/10 flex items-center justify-center text-royal-gold font-bold border border-royal-gold/20">
+                                    ✓
+                                </div>
+
+                                <div>
+                                    <h4 class="font-semibold font-serif text-lg text-royal-navy">
+                                        Expert Guidance
+                                    </h4>
+
+                                    <p class="text-slate-500 mt-1 text-sm font-light leading-relaxed">
+                                        Our experienced consultants help you make confident property decisions.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-5">
+                                <div
+                                    class="size-8 shrink-0 rounded-full bg-royal-gold/10 flex items-center justify-center text-royal-gold font-bold border border-royal-gold/20">
+                                    ✓
+                                </div>
+
+                                <div>
+                                    <h4 class="font-semibold font-serif text-lg text-royal-navy">
+                                        Best Investment Opportunities
+                                    </h4>
+
+                                    <p class="text-slate-500 mt-1 text-sm font-light leading-relaxed">
+                                        Discover high-growth projects from India's most trusted developers.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="mt-10 w-full px-8 py-4 bg-royal-navy hover:bg-royal-gold text-white hover:text-royal-navy border border-royal-navy hover:border-royal-gold transition-all duration-300 rounded-full font-serif uppercase tracking-widest text-sm font-semibold shadow-lg shadow-royal-navy/10">
+                            Explore Properties
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <div id="gallery"></div>
+
+    <script type="module" src="./js/pages/home.js"></script>
+</body>
+
+</html>

@@ -13,4 +13,11 @@ export const homeSliderData = [
         buttonText: "Book A Visit",
         buttonLink: "#contact"
     },
+    {
+        image: "img/img3.webp",
+        title: "An Address Beyond Expectations",
+        subtitle: "Experience Iconic Architecture, Unmatched Luxury & World-Class Amenities",
+        buttonText: "Download Brochure",
+        buttonLink: "#brochure"
+    }
 ];

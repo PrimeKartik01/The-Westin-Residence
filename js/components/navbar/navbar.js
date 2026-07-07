@@ -41,8 +41,8 @@ export function initNavbar({
 
                     <!-- Desktop CTA -->
                     <a
-                        href="${data.ctaLink}"
-                        class="hidden lg:inline-flex items-center px-6 py-3 z-10 bg-white text-royal-navy font-bold rounded-full hover:scale-105 hover:bg-royal-gold-dark transition-all duration-300 font-serif tracking-widest uppercase text-xs shadow-md shadow-royal-gold/15"
+                        href="javascript:void(0)"
+                        class="enquire-now-cta hidden  lg:inline-flex items-center px-6 py-3 z-10 bg-white text-royal-navy font-bold rounded-full hover:scale-105 hover:bg-royal-gold-dark transition-all duration-300 font-serif tracking-widest uppercase text-xs shadow-md shadow-royal-gold/15"
                     >
                         ${data.ctaText}
                     </a>
@@ -79,10 +79,10 @@ export function initNavbar({
             <div class="flex justify-end">
 
                 <button
-                    id="close-menu"
-                    class="text-white text-3xl"
+                     id="close-menu"
+                     class="text-white text-3xl"
                 >
-                    ×
+                     ×
                 </button>
 
             </div>
@@ -101,8 +101,8 @@ export function initNavbar({
                 `).join("")}
 
                 <a
-                    href="${data.ctaLink}"
-                    class="mt-4 px-5 py-3 bg-royal-gold text-royal-navy hover:bg-royal-gold-dark rounded-full text-center font-serif font-bold tracking-widest uppercase text-xs transition-colors duration-300"
+                    href="javascript:void(0)"
+                    class="enquire-now-cta mt-4 px-5 py-3 bg-royal-gold text-royal-navy hover:bg-royal-gold-dark rounded-full text-center font-serif font-bold tracking-widest uppercase text-xs transition-colors duration-300"
                 >
                     ${data.ctaText}
                 </a>
@@ -184,6 +184,14 @@ export function initNavbar({
             );
 
         });
+
+    // Bind click event to Enquire Now CTAs to open modal popup
+    container.querySelectorAll(".enquire-now-cta").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.dispatchEvent(new CustomEvent("open-lead-modal"));
+        });
+    });
 
     window.addEventListener("scroll", () => {
 

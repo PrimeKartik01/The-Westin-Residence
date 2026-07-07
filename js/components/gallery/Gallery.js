@@ -1,129 +1,94 @@
 export function Gallery({
     containerId,
-    images = [],
-    video = "",
-    interval = 5000
+    images = []
 }) {
 
     const container = document.getElementById(containerId);
 
     if (!container) return;
 
-    let current = 0;
-
     container.innerHTML = `
 
-        <section class="py-20 bg-royal-navy text-white">
+        <section class="py-24 bg-royal-cream border-y border-royal-gold/10">
 
             <div class="container mx-auto px-6">
 
-                <div class="text-center mb-12">
+                <!-- Heading -->
 
-                    <h2 class="text-4xl lg:text-5xl font-serif font-bold text-royal-gold">
-                        Gallery & Video Tour
+                <div class="text-center max-w-3xl mx-auto mb-16">
+
+                    <span class="inline-block px-5 py-2 rounded-full bg-royal-gold/10 border border-royal-gold/20 text-royal-gold uppercase tracking-[0.25em] text-xs font-semibold">
+                        Project Gallery
+                    </span>
+
+                    <h2 class="mt-5 text-4xl lg:text-5xl font-serif font-bold text-royal-navy">
+                        Experience Timeless Luxury
                     </h2>
 
-                    <p class="text-slate-300 mt-4 max-w-2xl mx-auto font-sans font-light">
-                        Explore our premium project through images and an immersive walkthrough.
+                    <p class="mt-5 text-slate-600 leading-8">
+                        Every corner of The Westin Residences reflects sophistication,
+                        elegance and world-class architecture designed for modern luxury living.
                     </p>
 
                 </div>
 
-                <div class="grid lg:grid-cols-2 gap-10 items-center">
+                <!-- Gallery -->
 
-                    <!-- Image Slider -->
-                    <div class="relative overflow-hidden rounded-3xl shadow-2xl h-[450px] border border-royal-gold/20">
+                <div class="grid grid-cols-12 gap-5">
 
-                        <div id="gallery-slider" class="relative w-full h-full">
+                    <!-- Large Image -->
 
-                            ${images.map((image, index) => `
-                                <img
-                                    src="${image}"
-                                    class="
-                                        gallery-slide
-                                        absolute
-                                        inset-0
-                                        w-full
-                                        h-full
-                                        object-cover
-                                        transition-opacity
-                                        duration-700
-                                        ${index === 0 ? "opacity-100" : "opacity-0"}
-                                    "
-                                >
-                            `).join("")}
+                    <div class="col-span-12 lg:col-span-6">
+
+                        <div class="group relative overflow-hidden rounded-3xl h-full min-h-[620px]">
+
+                            <img
+                                src="${images[0]}"
+                                class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                            >
+
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+
+                            <div class="absolute bottom-0 left-0 p-10">
+
+                                <span class="text-royal-gold uppercase tracking-[0.35em] text-xs">
+                                    Luxury Living
+                                </span>
+
+                                <h3 class="text-white text-4xl font-serif mt-3">
+                                    Designed For The Elite
+                                </h3>
+
+                            </div>
 
                         </div>
-                        <!-- Previous -->
-                        <button
-                            id="gallery-prev"
-                            class="
-                                absolute
-                                left-4
-                                top-1/2
-                                -translate-y-1/2
-                                bg-royal-navy/85
-                                border
-                                border-royal-gold/30
-                                text-royal-gold
-                                hover:bg-royal-gold
-                                hover:text-royal-navy
-                                backdrop-blur-md
-                                rounded-full
-                                w-12
-                                h-12
-                                flex
-                                items-center
-                                justify-center
-                                shadow-lg
-                                transition-all
-                                duration-300
-                                cursor-pointer
-                            "
-                        >
-                            ❮
-                        </button>
-
-                        <!-- Next -->
-                        <button
-                            id="gallery-next"
-                            class="
-                                absolute
-                                right-4
-                                top-1/2
-                                -translate-y-1/2
-                                bg-royal-navy/85
-                                border
-                                border-royal-gold/30
-                                text-royal-gold
-                                hover:bg-royal-gold
-                                hover:text-royal-navy
-                                backdrop-blur-md
-                                rounded-full
-                                w-12
-                                h-12
-                                flex
-                                items-center
-                                justify-center
-                                shadow-lg
-                                transition-all
-                                duration-300
-                                cursor-pointer
-                            "
-                        >
-                            ❯
-                        </button>
 
                     </div>
 
-                    <!-- Video -->
-                    <div class="rounded-3xl overflow-hidden shadow-2xl border border-royal-gold/20">
+                    <!-- Small Images -->
 
-                        <iframe
-                            class="w-full h-[450px]"
-                            src="${video}"
-                            allowfullscreen
-                        ></iframe>
+                    <div class="col-span-12 lg:col-span-6">
+
+                        <div class="grid grid-cols-2 gap-5 h-full">
+
+                            ${images.slice(1, 7).map(image => `
+
+                                <div class="group relative overflow-hidden rounded-3xl min-h-[300px]">
+
+                                    <img
+                                        src="${image}"
+                                        class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                                    >
+
+                                    <div class="absolute inset-0 bg-black/15 group-hover:bg-black/35 transition"></div>
+
+                                    <div class="absolute inset-0 border border-white/10 rounded-3xl"></div>
+
+                                </div>
+
+                            `).join("")}
+
+                        </div>
 
                     </div>
 
@@ -134,46 +99,5 @@ export function Gallery({
         </section>
 
     `;
-
-    const slides =
-        container.querySelectorAll(".gallery-slide");
-
-    function showSlide(index) {
-
-        slides.forEach(slide => {
-            slide.classList.remove("opacity-100");
-            slide.classList.add("opacity-0");
-        });
-
-        slides[index].classList.remove("opacity-0");
-        slides[index].classList.add("opacity-100");
-
-    }
-
-    function nextSlide() {
-
-        current =
-            (current + 1) % slides.length;
-
-        showSlide(current);
-
-    }
-
-    function prevSlide() {
-
-        current =
-            (current - 1 + slides.length) % slides.length;
-
-        showSlide(current);
-
-    }
-
-    container.querySelector("#gallery-next")
-        .addEventListener("click", nextSlide);
-
-    container.querySelector("#gallery-prev")
-        .addEventListener("click", prevSlide);
-
-    setInterval(nextSlide, interval);
 
 }

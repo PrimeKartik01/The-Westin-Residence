@@ -1,6 +1,6 @@
 import { leadFormData } from "../../data/leadFormData.js";
 
-export function LeadForm() {
+export function LeadForm(idSuffix = "") {
 
     const requirementOptions = leadFormData.requirements
         .map(option => `
@@ -11,10 +11,10 @@ export function LeadForm() {
         .join("");
 
     return `
-        <div class="pointer-events-auto w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden mt-8">
+        <div class="pointer-events-auto w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden">
 
             <div class="bg-royal-navy px-8 py-6">
-                <h2 class="text-3xl font-bold font-serif text-royal-gold">
+                <h2 class="text-3xl font-bold font-serif text-royal-gold" >
                     Enquire Now
                 </h2>
 
@@ -24,7 +24,7 @@ export function LeadForm() {
             </div>
 
             <form
-                id="lead-form"
+                id="lead-form${idSuffix}"
                 class="p-8 space-y-5 bg-white"
             >
 
@@ -71,7 +71,7 @@ export function LeadForm() {
                 </select>
 
                 <button
-                    id="lead-submit-btn"
+                    id="lead-submit-btn${idSuffix}"
                     type="submit"
                     class="w-full bg-royal-gold py-3 rounded-lg font-bold"
                 >
@@ -84,9 +84,9 @@ export function LeadForm() {
     `;
 }
 
-export function initLeadForm() {
+export function initLeadForm(idSuffix = "") {
 
-    const form = document.getElementById("lead-form");
+    const form = document.getElementById(`lead-form${idSuffix}`);
 
     if (!form) return;
 
@@ -95,7 +95,7 @@ export function initLeadForm() {
         e.preventDefault();
 
         const button =
-            document.getElementById("lead-submit-btn");
+            document.getElementById(`lead-submit-btn${idSuffix}`);
 
         button.disabled = true;
         button.innerText = "Submitting...";
@@ -136,6 +136,8 @@ export function initLeadForm() {
             if (result.success) {
 
                 form.reset();
+                localStorage.setItem("leadSubmitted", "true");
+                window.dispatchEvent(new CustomEvent("lead-submitted"));
 
             }
 

@@ -10,6 +10,14 @@ import { galleryData } from "../data/galleryData.js";
 import { FloorPlans } from "../components/floorplan/FloorPlans.js";
 import { floorPlanData } from "../data/floorPlanData.js";
 
+import { Amenities } from "../components/amenities/Amenities.js";
+import { amenities } from "../data/amenitiesData.js";
+
+import { Footer } from "../components/footer/Footer.js";
+
+import { Map } from "../components/map/Map.js";
+import { mapData } from "../data/mapData.js";
+
 
 initHeroSlider({
     containerId: "hero-slider",
@@ -32,4 +40,18 @@ Gallery({
 FloorPlans({
     containerId: "floor-plans",
     plans: floorPlanData
+});
+
+Amenities({
+    containerId: "amenities",
+    amenities
+});
+
+Map({
+    containerId: "map",
+    mapUrl: mapData.mapUrl
+});
+
+Footer({
+    containerId: "footer"
 });

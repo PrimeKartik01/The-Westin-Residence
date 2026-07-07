@@ -3,7 +3,8 @@ export const galleryData = {
         "img/img1.webp",
         "img/img2.webp",
         "img/img1.webp",
-        "img/img2.webp"
+        "img/img2.webp",
+        "img/img2.webp",
     ],
 
     video:

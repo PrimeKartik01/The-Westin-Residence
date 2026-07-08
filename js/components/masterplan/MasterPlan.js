@@ -21,16 +21,15 @@ export function MasterPlan({
                 <div class="container mx-auto px-6">
 
                     <!-- Section Header -->
-                    <div class="text-center mb-16">
+                    <div class="text-center mb-10">
                         <span class="inline-block px-5 py-2 rounded-full bg-royal-gold/10 text-royal-gold font-serif tracking-widest uppercase text-xs border border-royal-gold/20 font-semibold">
                             Site Overview
                         </span>
                         <h2 class="text-4xl lg:text-5xl font-bold font-serif text-white mt-4">
                             Master Plan
                         </h2>
-                        <p class="text-slate-400 mt-4 max-w-2xl mx-auto font-sans font-light leading-relaxed">
-                            Explore the grand layout of The Westin Residence — meticulously planned for an unmatched living experience.
-                        </p>
+                        
+                        </div>
                     </div>
 
                     <!-- Master Plan Image Container -->
@@ -127,6 +126,14 @@ export function MasterPlan({
         const unlockBtn = container.querySelector("#unlock-master-plan-btn");
         if (unlockBtn) {
             unlockBtn.addEventListener("click", () => {
+                openModal();
+            });
+        }
+
+        // "Enquire Now" button above the master plan image
+        const enquireBtn = container.querySelector("#masterplan-enquire-btn");
+        if (enquireBtn) {
+            enquireBtn.addEventListener("click", () => {
                 openModal();
             });
         }

@@ -19,7 +19,7 @@ export function initHeroSlider({
 
     container.innerHTML = `
 
-        <div class="relative h-[35rem]  md:h-[48rem] overflow-hidden">
+        <div class="relative h-[25rem]  md:h-[48rem] overflow-hidden">
 
             <!-- Slides -->
             <div class="absolute inset-0">
@@ -70,14 +70,14 @@ export function initHeroSlider({
                         <div class="text-white text-center lg:text-left space-y-6">
                             <h1
                                 id="hero-title"
-                                class="text-5xl lg:text-7xl font-bold font-serif leading-tight transition-all duration-500"
+                                class="text-2xl lg:text-7xl font-bold font-serif leading-tight transition-all duration-500"
                             >
                                 ${slides[0].title}
                             </h1>
 
                             <p
                                 id="hero-subtitle"
-                                class="text-xl lg:text-2xl text-royal-gold font-sans font-light tracking-widest transition-all duration-500 uppercase"
+                                class="text-md lg:text-2xl text-royal-gold font-sans font-light tracking-widest transition-all duration-500 uppercase"
                             >
                                 ${slides[0].subtitle}
                             </p>

@@ -12,7 +12,7 @@ export function initNavbar({
     
     <nav
         id="main-navbar"
-        class="fixed top-0 pt-4 max-w-[1700px] left-1/2 -translate-x-1/2 w-full z-50 transition-all duration-500"
+        class="fixed top-0 pt-2 md:pt-4 max-w-[1700px] left-1/2 -translate-x-1/2 w-full z-50 transition-all duration-500"
     >
 
         <div
@@ -29,7 +29,7 @@ export function initNavbar({
                     <img
                         src="${data.logo}"
                         alt="Logo"
-                        class="h-20 object-cover"
+                        class=" h-14 md:h-20 object-cover"
                     >
 
                 </a>
@@ -180,7 +180,21 @@ export function initNavbar({
 
             link.addEventListener(
                 "click",
-                closeMobileMenu
+                (e) => {
+                    const href = link.getAttribute("href");
+                    if (href && href.startsWith("#")) {
+                        e.preventDefault();
+                        closeMobileMenu();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            setTimeout(() => {
+                                target.scrollIntoView({ behavior: "smooth", block: "start" });
+                            }, 350);
+                        }
+                    } else {
+                        closeMobileMenu();
+                    }
+                }
             );
 
         });

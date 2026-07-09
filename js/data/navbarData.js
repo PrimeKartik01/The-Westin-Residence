@@ -4,19 +4,19 @@ export const navbarData = {
     links: [
         {
             label: "Home",
-            href: "index.html"
+            href: "#hero-slider"
         },
         {
-            label: "Projects",
-            href: "projects.html"
+            label: "Floor Plans",
+            href: "#floor-plans"
         },
         {
             label: "About",
-            href: "about.html"
+            href: "#about-section"
         },
         {
             label: "Contact",
-            href: "#contact"
+            href: "#footer"
         }
     ],
 

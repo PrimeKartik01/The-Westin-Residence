@@ -98,7 +98,7 @@ export function LeadForm(idSuffix = "") {
                 </div>
 
                 <!-- OTP Digit Inputs -->
-                <div class="flex gap-3 justify-center" id="otp-inputs${idSuffix}">
+                <div class="flex gap-1  md:gap-3 justify-center" id="otp-inputs${idSuffix}">
                     <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"
                         class="otp-digit w-12 h-14 text-center text-2xl font-bold border-2 border-slate-200 rounded-xl focus:outline-none focus:border-royal-gold transition-all bg-slate-50 text-royal-navy"
                         data-suffix="${idSuffix}"

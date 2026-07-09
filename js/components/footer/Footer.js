@@ -41,37 +41,37 @@ export function Footer({
                         <ul class="space-y-4">
 
                             <li>
-                                <a href="#" class="text-slate-300 hover:text-royal-gold transition">
+                                <a href="#hero-slider" class="text-slate-300 hover:text-royal-gold transition footer-scroll-link">
                                     Home
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#" class="text-slate-300 hover:text-royal-gold transition">
+                                <a href="#about-section" class="text-slate-300 hover:text-royal-gold transition footer-scroll-link">
                                     About
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#" class="text-slate-300 hover:text-royal-gold transition">
+                                <a href="#amenities" class="text-slate-300 hover:text-royal-gold transition footer-scroll-link">
                                     Amenities
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#" class="text-slate-300 hover:text-royal-gold transition">
+                                <a href="#gallery" class="text-slate-300 hover:text-royal-gold transition footer-scroll-link">
                                     Gallery
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#" class="text-slate-300 hover:text-royal-gold transition">
+                                <a href="#floor-plans" class="text-slate-300 hover:text-royal-gold transition footer-scroll-link">
                                     Floor Plans
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#" class="text-slate-300 hover:text-royal-gold transition">
+                                <a href="#footer" class="text-slate-300 hover:text-royal-gold transition footer-scroll-link">
                                     Contact
                                 </a>
                             </li>
@@ -173,5 +173,19 @@ export function Footer({
         </footer>
 
     `;
+
+    // Smooth scroll for footer links
+    container.querySelectorAll(".footer-scroll-link").forEach(link => {
+        link.addEventListener("click", (e) => {
+            const href = link.getAttribute("href");
+            if (href && href.startsWith("#")) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            }
+        });
+    });
 
 }

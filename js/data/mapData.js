@@ -1,95 +1,60 @@
 export const locationData = {
 
     baseLocation: {
-        name: "Pride World City",
-        lat: 18.6278,
-        lng: 73.9320
+        name: "Sector 103, Dwarka Expressway",
+        lat: 28.5326,
+        lng: 76.9928
     },
 
     locations: [
 
         {
-            name: "Pune Airport",
+            name: "Global City",
+            distance: "5 Min",
+            lat: 28.5185,
+            lng: 77.0175
+        },
+
+        {
+            name: "Trumpet Flyover",
+            distance: "7 Min",
+            lat: 28.5245,
+            lng: 76.9998
+        },
+
+        {
+            name: "Yashobhoomi (IICC)",
             distance: "10 Min",
-            lat: 18.5822,
-            lng: 73.9197
+            lat: 28.5518,
+            lng: 77.0436
         },
 
         {
-            name: "EON IT Park",
+            name: "Bharat Vandana Park",
             distance: "12 Min",
-            lat: 18.5603,
-            lng: 73.9397
+            lat: 28.5760,
+            lng: 77.0307
         },
 
         {
-            name: "Kalyani Nagar",
-            distance: "18 Min",
-            lat: 18.5484,
-            lng: 73.9007
+            name: "Dwarka Golf Course",
+            distance: "13 Min",
+            lat: 28.5707,
+            lng: 77.0555
         },
 
         {
-            name: "Koregaon Park",
-            distance: "22 Min",
-            lat: 18.5362,
-            lng: 73.8930
-        },
-
-        {
-            name: "Hinjewadi IT Park",
-            distance: "45 Min",
-            lat: 18.5910,
-            lng: 73.7389
-        },
-
-        {
-            name: "Nashik Phata",
-            distance: "20 Min",
-            lat: 18.6094,
-            lng: 73.8201
-        },
-
-        {
-            name: "Wagholi",
+            name: "Diplomatic Enclave II",
             distance: "15 Min",
-            lat: 18.5793,
-            lng: 73.9781
+            lat: 28.5489,
+            lng: 77.0865
         },
 
         {
-            name: "Yerwada",
-            distance: "20 Min",
-            lat: 18.5514,
-            lng: 73.8786
-        },
-
-        {
-            name: "Bhosari MIDC",
-            distance: "18 Min",
-            lat: 18.6298,
-            lng: 73.8403
-        },
-
-        {
-            name: "Moshi",
+            name: "Indira Gandhi International Airport",
             distance: "15 Min",
-            lat: 18.6794,
-            lng: 73.8582
-        },
-
-        {
-            name: "Alandi",
-            distance: "12 Min",
-            lat: 18.6775,
-            lng: 73.8987
-        },
-
-        {
-            name: "Chakan",
-            distance: "30 Min",
-            lat: 18.7606,
-            lng: 73.8636
+            lat: 28.5562,
+            lng: 77.1000
         }
 
     ]

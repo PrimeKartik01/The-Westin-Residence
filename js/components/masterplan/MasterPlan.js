@@ -17,94 +17,144 @@ export function MasterPlan({
         const isSubmitted = checkSubmitted();
 
         container.innerHTML = `
-            <section class="py-24 bg-[#0b1325] border-b border-royal-gold/10">
-                <div class="container mx-auto px-6">
+            <section class="py-16 md:py-24 bg-gradient-to-b from-[#0b1325] via-[#0f1a35] to-[#0b1325] border-b border-royal-gold/10 relative overflow-hidden">
+                
+                <!-- Decorative elements -->
+                <div class="absolute top-0 left-0 w-72 h-72 bg-royal-gold/5 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
+                <div class="absolute bottom-0 right-0 w-96 h-96 bg-royal-gold/3 rounded-full blur-[150px] translate-x-1/3 translate-y-1/3"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-royal-gold/5 rounded-full opacity-30"></div>
+
+                <div class="container mx-auto px-6 relative z-10">
 
                     <!-- Section Header -->
-                    <div class="text-center mb-10">
-                        <span class="inline-block px-5 py-2 rounded-full bg-royal-gold/10 text-royal-gold font-serif tracking-widest uppercase text-xs border border-royal-gold/20 font-semibold">
+                    <div class="text-center mb-12 md:mb-16">
+                        <span class="inline-block px-6 py-2.5 rounded-full bg-royal-gold/10 text-royal-gold font-serif tracking-[0.2em] uppercase text-xs border border-royal-gold/20 font-semibold mb-6">
                             Site Overview
                         </span>
-                        <h2 class="text-4xl lg:text-5xl font-bold font-serif text-white mt-4">
-                            Master Plan
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-white mt-4 leading-tight">
+                            Master <span class="text-royal-gold">Plan</span>
                         </h2>
-                        
-                        </div>
+                        <p class="text-slate-400 mt-5 max-w-xl mx-auto font-sans font-light leading-relaxed text-sm md:text-base">
+                            Explore the meticulously designed layout of The Westin Residence — 
+                            where every detail is crafted for an elevated living experience.
+                        </p>
                     </div>
 
                     <!-- Master Plan Image Container -->
-                    <div class="relative max-w-5xl mx-auto rounded-3xl overflow-hidden border border-royal-gold/20 shadow-2xl shadow-black/60">
+                    <div class="relative max-w-5xl mx-auto">
+                        
+                        <!-- Outer glow frame -->
+                        <div class="absolute -inset-1 bg-gradient-to-br from-royal-gold/20 via-transparent to-royal-gold/20 rounded-[2rem] blur-sm"></div>
+                        
+                        <div class="relative rounded-[1.8rem] overflow-hidden border border-royal-gold/25 shadow-[0_20px_80px_-20px_rgba(197,168,128,0.15)] bg-[#0a0f1e]">
 
-                        <!-- The image (blurred until submitted) -->
-                        <img
-                            src="${masterPlanImage}"
-                            alt="${masterPlanTitle}"
-                            id="master-plan-img"
-                            class="w-full object-cover transition-all duration-700 ${isSubmitted ? "" : "blur-xl scale-105 select-none pointer-events-none"}"
-                        >
-
-                        <!-- Lock Overlay (shown only if not submitted) -->
-                        ${isSubmitted ? "" : `
-                            <div id="master-plan-overlay" class="absolute inset-0 bg-black/55 flex flex-col items-center justify-center text-white text-center px-6">
-
-                                <div class="mb-6">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-royal-gold mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                                    </svg>
-                                    <h3 class="text-2xl font-bold font-serif text-royal-gold">Exclusive Access</h3>
-                                    <p class="text-slate-300 mt-3 text-sm font-sans font-light max-w-xs mx-auto leading-relaxed">
-                                        Fill in the enquiry form to unlock the full master plan of The Westin Residence.
-                                    </p>
+                            <!-- Top info bar -->
+                            <div class="flex items-center justify-between px-6 py-3.5 bg-gradient-to-r from-[#0d1529] via-[#111d3a] to-[#0d1529] border-b border-royal-gold/10">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-royal-gold/70 animate-pulse"></div>
+                                    <span class="text-royal-gold/80 text-[11px] font-sans tracking-widest uppercase font-medium">
+                                        ${masterPlanTitle}
+                                    </span>
                                 </div>
-
-                                <button
-                                    id="unlock-master-plan-btn"
-                                    class="
-                                        mt-2
-                                        px-10 py-3
-                                        bg-royal-gold
-                                        hover:bg-royal-gold-dark
-                                        text-royal-navy
-                                        font-serif
-                                        font-semibold
-                                        uppercase
-                                        tracking-widest
-                                        text-xs
-                                        rounded-full
-                                        shadow-lg shadow-royal-gold/20
-                                        transition-all duration-300
-                                        hover:scale-105
-                                    "
-                                >
-                                    Unlock Master Plan
-                                </button>
-
+                                ${isSubmitted ? `
+                                    <div class="flex items-center gap-2 text-emerald-400/80 text-[11px] font-sans tracking-wider uppercase">
+                                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                        Unlocked
+                                    </div>
+                                ` : `
+                                    <div class="flex items-center gap-2 text-slate-500 text-[11px] font-sans tracking-wider uppercase">
+                                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                                        Locked
+                                    </div>
+                                `}
                             </div>
-                        `}
 
+                            <!-- The image -->
+                            <div class="relative">
+                                <img
+                                    src="${masterPlanImage}"
+                                    alt="${masterPlanTitle}"
+                                    id="master-plan-img"
+                                    class="w-full object-cover transition-all duration-700 ${isSubmitted ? "" : "blur-xl scale-105 select-none pointer-events-none"}"
+                                >
+
+                                <!-- Lock Overlay (shown only if not submitted) -->
+                                ${isSubmitted ? "" : `
+                                    <div id="master-plan-overlay" class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80 flex flex-col items-center justify-center text-white text-center px-6">
+
+                                        <!-- Animated lock icon -->
+                                        <div class="relative mb-6">
+                                            <div class="absolute inset-0 bg-royal-gold/10 rounded-full blur-2xl scale-150 animate-pulse"></div>
+                                            <div class="relative w-20 h-20 rounded-full bg-gradient-to-br from-royal-gold/20 to-royal-gold/5 border border-royal-gold/30 flex items-center justify-center backdrop-blur-sm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 text-royal-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <h3 class="text-2xl md:text-3xl font-bold font-serif text-royal-gold mb-2">
+                                            Exclusive Access
+                                        </h3>
+                                        <p class="text-slate-300/80 mt-2 text-sm font-sans font-light max-w-sm mx-auto leading-relaxed">
+                                            Submit your enquiry to unlock the complete master plan 
+                                            of The Westin Residence.
+                                        </p>
+
+                                        <button
+                                            id="unlock-master-plan-btn"
+                                            class="
+                                                mt-8
+                                                group
+                                                relative
+                                                inline-flex items-center gap-3
+                                                px-10 py-3.5
+                                                bg-gradient-to-r from-royal-gold to-[#d4b88e]
+                                                hover:from-royal-gold-dark hover:to-royal-gold
+                                                text-royal-navy
+                                                font-serif
+                                                font-bold
+                                                uppercase
+                                                tracking-[0.15em]
+                                                text-xs
+                                                rounded-full
+                                                shadow-xl shadow-royal-gold/25
+                                                transition-all duration-300
+                                                hover:scale-105 hover:shadow-royal-gold/40
+                                            "
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                                            </svg>
+                                            Unlock Master Plan
+                                        </button>
+                                    </div>
+                                `}
+                            </div>
+
+                        </div>
                     </div>
 
-                    <!-- Download button (only after submission) -->
-                    ${isSubmitted ? `
-                        <div class="text-center mt-10">
+                    <!-- Action buttons row -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
+                        ${isSubmitted ? `
                             <a
                                 href="${masterPlanImage}"
-                                download="${masterPlanTitle.replace(/\s+/g, "_")}.jpg"
+                                download="${masterPlanTitle.replace(/\\s+/g, "_")}.jpg"
                                 class="
                                     inline-flex items-center gap-3
                                     px-10 py-4
-                                    bg-royal-gold
-                                    hover:bg-royal-gold-dark
+                                    bg-gradient-to-r from-royal-gold to-[#d4b88e]
+                                    hover:from-royal-gold-dark hover:to-royal-gold
                                     text-royal-navy
                                     font-serif
-                                    font-semibold
+                                    font-bold
                                     uppercase
-                                    tracking-widest
+                                    tracking-[0.15em]
                                     text-xs
                                     rounded-full
-                                    shadow-lg shadow-royal-gold/20
+                                    shadow-xl shadow-royal-gold/25
                                     transition-all duration-300
-                                    hover:scale-105
+                                    hover:scale-105 hover:shadow-royal-gold/40
                                 "
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -112,8 +162,33 @@ export function MasterPlan({
                                 </svg>
                                 Download Master Plan
                             </a>
-                        </div>
-                    ` : ""}
+                        ` : `
+                            <button
+                                id="masterplan-enquire-btn"
+                                class="
+                                    inline-flex items-center gap-3
+                                    px-10 py-4
+                                    bg-gradient-to-r from-royal-gold to-[#d4b88e]
+                                    hover:from-royal-gold-dark hover:to-royal-gold
+                                    text-royal-navy
+                                    font-serif
+                                    font-bold
+                                    uppercase
+                                    tracking-[0.15em]
+                                    text-xs
+                                    rounded-full
+                                    shadow-xl shadow-royal-gold/25
+                                    transition-all duration-300
+                                    hover:scale-105 hover:shadow-royal-gold/40
+                                "
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                                </svg>
+                                Enquire Now
+                            </button>
+                        `}
+                    </div>
 
                 </div>
             </section>
@@ -130,7 +205,7 @@ export function MasterPlan({
             });
         }
 
-        // "Enquire Now" button above the master plan image
+        // "Enquire Now" button below the master plan image
         const enquireBtn = container.querySelector("#masterplan-enquire-btn");
         if (enquireBtn) {
             enquireBtn.addEventListener("click", () => {
@@ -162,27 +237,27 @@ export function MasterPlan({
         const section = container.querySelector("section > div");
         if (section && !container.querySelector("#master-download-btn")) {
             const downloadDiv = document.createElement("div");
-            downloadDiv.className = "text-center mt-10";
+            downloadDiv.className = "flex items-center justify-center mt-10";
             downloadDiv.id = "master-download-btn";
             downloadDiv.innerHTML = `
                 <a
                     href="${masterPlanImage}"
-                    download="${masterPlanTitle.replace(/\s+/g, "_")}.jpg"
+                    download="${masterPlanTitle.replace(/\\s+/g, "_")}.jpg"
                     class="
                         inline-flex items-center gap-3
                         px-10 py-4
-                        bg-royal-gold
-                        hover:bg-royal-gold-dark
+                        bg-gradient-to-r from-royal-gold to-[#d4b88e]
+                        hover:from-royal-gold-dark hover:to-royal-gold
                         text-royal-navy
                         font-serif
-                        font-semibold
+                        font-bold
                         uppercase
-                        tracking-widest
+                        tracking-[0.15em]
                         text-xs
                         rounded-full
-                        shadow-lg shadow-royal-gold/20
+                        shadow-xl shadow-royal-gold/25
                         transition-all duration-300
-                        hover:scale-105
+                        hover:scale-105 hover:shadow-royal-gold/40
                     "
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -191,7 +266,22 @@ export function MasterPlan({
                     Download Master Plan
                 </a>
             `;
+
+            // Remove the enquire button row if present
+            const enquireRow = container.querySelector("#masterplan-enquire-btn")?.closest(".flex");
+            if (enquireRow) enquireRow.remove();
+
             section.appendChild(downloadDiv);
+        }
+
+        // Update status bar
+        const statusBar = container.querySelector(".border-b.border-royal-gold\\/10 .text-slate-500");
+        if (statusBar) {
+            statusBar.innerHTML = `
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Unlocked
+            `;
+            statusBar.className = "flex items-center gap-2 text-emerald-400/80 text-[11px] font-sans tracking-wider uppercase";
         }
     }
 
@@ -215,14 +305,21 @@ export function MasterPlan({
 
         initLeadForm("-modal");
 
-        requestAnimationFrame(() => {
+        // Small timeout to ensure transition triggers reliably
+        setTimeout(() => {
             modal.classList.remove("opacity-0", "pointer-events-none");
-            modal.querySelector("#modal-content-container").classList.remove("scale-95");
-        });
+            const content = modal.querySelector("#modal-content-container");
+            if (content) content.classList.remove("scale-95");
+        }, 20);
 
         const closeModal = () => {
             modal.classList.add("opacity-0", "pointer-events-none");
-            modal.querySelector("#modal-content-container").classList.add("scale-95");
+            const content = modal.querySelector("#modal-content-container");
+            if (content) content.classList.add("scale-95");
+            // Remove the modal from DOM completely after it transition closes
+            setTimeout(() => {
+                modal.remove();
+            }, 300);
         };
 
         modal.querySelector("#close-modal-btn").addEventListener("click", closeModal);
@@ -237,6 +334,9 @@ export function MasterPlan({
             modal.classList.add("opacity-0", "pointer-events-none");
             const mc = modal.querySelector("#modal-content-container");
             if (mc) mc.classList.add("scale-95");
+            setTimeout(() => {
+                modal.remove();
+            }, 300);
         }
         unlockMasterPlan();
     });

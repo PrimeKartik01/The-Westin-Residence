@@ -30,7 +30,7 @@ export function FloorPlans({
 
         container.innerHTML = `
 
-            <section class="py-24 bg-royal-cream border-b border-royal-gold/10">
+            <section class="py-8 bg-royal-cream border-b border-royal-gold/10">
 
                 <div class="container mx-auto px-6">
 
@@ -115,62 +115,13 @@ export function FloorPlans({
                                     </div>
 
                                     <!-- Enquiry Now Button -->
-                                    <button
-                                        data-title="${plan.title}"
-                                        data-action="enquiry"
-                                        class="
-                                            floor-plan-enquiry-btn
-                                            mt-5
-                                            w-full
-                                            bg-royal-gold
-                                            hover:bg-royal-gold-dark
-                                            text-royal-navy
-                                            border
-                                            border-royal-gold
-                                            py-3
-                                            rounded-full
-                                            font-serif
-                                            uppercase
-                                            tracking-widest
-                                            text-[10px]
-                                            font-semibold
-                                            shadow-lg
-                                            shadow-royal-gold/10
-                                            transition-all
-                                            duration-300
-                                        "
-                                    >
-                                        Enquire Now
-                                    </button>
+                                 
 
                                     <!-- Download / Request Floor Plan Button -->
                                     <button
                                         data-title="${plan.title}"
                                         data-image="${plan.image}"
-                                        class="
-                                            floor-plan-btn
-                                            mt-3
-                                            w-full
-                                            bg-royal-navy
-                                            hover:bg-royal-gold
-                                            text-white
-                                            hover:text-royal-navy
-                                            border
-                                            border-royal-navy
-                                            hover:border-royal-gold
-                                            py-3
-                                            rounded-full
-                                            font-serif
-                                            uppercase
-                                            tracking-widest
-                                            text-[10px]
-                                            font-semibold
-                                            shadow-lg
-                                            shadow-royal-navy/5
-                                            transition-all
-                                            duration-300
-                                        "
-                                    >
+                                        class=" floor-plan-btn mt-3 w-full bg-royal-navy hover:bg-royal-gold text-white hover:text-royal-navy border border-royal-navy  hover:border-royal-gold py-3 rounded-full font-serif uppercase tracking-widest text-[10px] font-semibold shadow-lg shadow-royal-navy/5 transition-all duration-300">
                                         ${isSubmitted ? "Download Floor Plan" : "Request Floor Plan"}
                                     </button>
 
@@ -248,14 +199,21 @@ export function FloorPlans({
             }
         }
 
-        requestAnimationFrame(() => {
+        // Small timeout to ensure transition triggers reliably
+        setTimeout(() => {
             modal.classList.remove("opacity-0", "pointer-events-none");
-            modal.querySelector("#modal-content-container").classList.remove("scale-95");
-        });
+            const content = modal.querySelector("#modal-content-container");
+            if (content) content.classList.remove("scale-95");
+        }, 20);
 
         const closeModal = () => {
             modal.classList.add("opacity-0", "pointer-events-none");
-            modal.querySelector("#modal-content-container").classList.add("scale-95");
+            const content = modal.querySelector("#modal-content-container");
+            if (content) content.classList.add("scale-95");
+            // Remove the modal from DOM completely after it transition closes
+            setTimeout(() => {
+                modal.remove();
+            }, 300);
         };
 
         modal.querySelector("#close-modal-btn").addEventListener("click", closeModal);
@@ -270,6 +228,9 @@ export function FloorPlans({
             modal.classList.add("opacity-0", "pointer-events-none");
             const modalContent = modal.querySelector("#modal-content-container");
             if (modalContent) modalContent.classList.add("scale-95");
+            setTimeout(() => {
+                modal.remove();
+            }, 300);
         }
 
         render();

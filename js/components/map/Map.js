@@ -11,7 +11,7 @@ export function Map({
 
     container.innerHTML = `
 
-        <section class="py-24 bg-royal-cream border-b border-royal-gold/10">
+        <section class="py-10 bg-royal-cream border-b border-royal-gold/10">
 
             <div class="container mx-auto px-6">
 
@@ -97,7 +97,7 @@ export function Map({
 
                     <!-- Leaflet Map -->
 
-                    <div id="leaflet-map" class="lg:col-span-2 h-[580px] z-0"></div>
+                    <div id="leaflet-map" class="lg:col-span-2 h-[280px] md:h-[580px] z-0"></div>
 
                 </div>
 

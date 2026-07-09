@@ -9,13 +9,13 @@ export function Gallery({
 
     container.innerHTML = `
 
-        <section class="py-24 bg-royal-cream border-y border-royal-gold/10">
+        <section class="py-20 bg-royal-cream border-y border-royal-gold/10">
 
             <div class="container mx-auto px-6">
 
                 <!-- Heading -->
 
-                <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="text-center max-w-3xl mx-auto mb-14">
 
                     <span class="inline-block px-5 py-2 rounded-full bg-royal-gold/10 border border-royal-gold/20 text-royal-gold uppercase tracking-[0.25em] text-xs font-semibold">
                         Project Gallery
@@ -32,65 +32,39 @@ export function Gallery({
 
                 </div>
 
-                <!-- Gallery -->
+                <!-- Gallery Grid -->
 
-                <div class="grid grid-cols-12 gap-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                    <!-- Large Image -->
+                    ${images.slice(0, 7).map((image, index) => `
 
-                    <div class="col-span-12 lg:col-span-6">
-
-                        <div class="group relative overflow-hidden rounded-3xl h-full min-h-[620px]">
+                        <div class="group relative overflow-hidden rounded-3xl aspect-[4/3] bg-gray-100 shadow-lg cursor-pointer">
 
                             <img
-                                src="${images[0]}"
-                                class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                                src="${image}"
+                                alt="Gallery Image ${index + 1}"
+                                class="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-110"
                             >
 
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70 group-hover:opacity-100 transition duration-300"></div>
 
-                            <div class="absolute bottom-0 left-0 p-10">
+                            <div class="absolute inset-0 border border-white/10 rounded-3xl"></div>
 
-                                <span class="text-royal-gold uppercase tracking-[0.35em] text-xs">
+                            <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+
+                                <span class="text-royal-gold uppercase tracking-[0.25em] text-xs">
                                     Luxury Living
                                 </span>
 
-                                <h3 class="text-white text-4xl font-serif mt-3">
-                                    Designed For The Elite
+                                <h3 class="mt-2 text-white text-xl font-serif">
+                                    Gallery Image ${index + 1}
                                 </h3>
 
                             </div>
 
                         </div>
 
-                    </div>
-
-                    <!-- Small Images -->
-
-                    <div class="col-span-12 lg:col-span-6">
-
-                        <div class="grid grid-cols-2 gap-5 h-full">
-
-                            ${images.slice(1, 7).map(image => `
-
-                                <div class="group relative overflow-hidden rounded-3xl min-h-[300px]">
-
-                                    <img
-                                        src="${image}"
-                                        class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
-                                    >
-
-                                    <div class="absolute inset-0 bg-black/15 group-hover:bg-black/35 transition"></div>
-
-                                    <div class="absolute inset-0 border border-white/10 rounded-3xl"></div>
-
-                                </div>
-
-                            `).join("")}
-
-                        </div>
-
-                    </div>
+                    `).join("")}
 
                 </div>
 

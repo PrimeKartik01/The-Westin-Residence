@@ -9,13 +9,13 @@ export function Amenities({
 
     container.innerHTML = `
 
-        <section class="py-24 bg-white border-b border-royal-gold/10">
+        <section class="py-8 bg-white border-b border-royal-gold/10">
 
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-3">
 
                 <!-- Header -->
 
-                <div class="text-center mb-16">
+                <div class="text-center mb-8">
 
                     <span class="inline-block px-5 py-2 rounded-full bg-royal-gold/10 text-royal-gold font-serif tracking-widest uppercase text-xs border border-royal-gold/20 font-semibold">
                         Amenities
@@ -34,11 +34,11 @@ export function Amenities({
 
                 <!-- Grid -->
 
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-8">
 
                     ${amenities.map(item => `
 
-                        <div class="bg-royal-cream rounded-3xl p-8 border border-royal-gold/10 hover:border-royal-gold/45 hover:bg-white hover:shadow-2xl transition-all duration-500 group flex flex-col items-center text-center">
+                        <div class="bg-royal-cream rounded-3xl p-3 md:p-8 border border-royal-gold/10 hover:border-royal-gold/45 hover:bg-white hover:shadow-2xl transition-all duration-500 group flex flex-col items-center text-center">
 
                             <!-- Icon Wrapper -->
 
@@ -48,16 +48,9 @@ export function Amenities({
 
                             <!-- Title -->
 
-                            <h3 class="text-xl font-bold font-serif text-royal-navy mb-3">
+                            <h3 class="md:text-xl font-bold font-serif text-royal-navy mb-3">
                                 ${item.title}
                             </h3>
-
-                            <!-- Description -->
-
-                            <p class="text-slate-500 text-sm font-sans font-light leading-relaxed">
-                                ${item.description}
-                            </p>
-
                         </div>
 
                     `).join("")}

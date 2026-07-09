@@ -20,6 +20,7 @@ import { Footer } from "../components/footer/Footer.js";
 import { Map } from "../components/map/Map.js";
 import { locationData } from "../data/mapData.js";
 
+import { FloatingCTA } from "../components/floatingcta/FloatingCTA.js";
 
 initHeroSlider({
     containerId: "hero-slider",
@@ -62,4 +63,7 @@ Map({
 
 Footer({
     containerId: "footer"
-});
+});
+
+FloatingCTA();
+
